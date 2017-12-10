@@ -1,0 +1,19 @@
+[{
+        "home": "Home",
+        "page": "Next page",
+        "about": "About us",
+        "contact": "Contact us"
+    },
+    {
+        "home": "Hjemme",
+        "page": "Næste side",
+        "about": "Om os",
+        "contact": "Kontakt os"
+    },
+    {
+        "home": "الرئيسية",
+        "page": "التالي",
+        "about": "حول",
+        "contact": "اتصل بنا"
+    }
+]

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='jquery-3.2.1.min.js'></script>
+</head>
+
+<body>
+    <button class="lang" data-lang='1'>English</button>
+    <button class="lang" data-lang='2'>Danish</button>
+    <button class="lang" data-lang='3'>عريي</button><br>
+    <ul id="list"></ul>
+
+</body>
+
+<script>
+    var lng = localStorage.getItem('lang');
+
+    function getLang(numb) {
+        var jsn = numb - 1;
+        var list = '';
+        $('#list').empty()
+        $.getJSON('lang.json', function(json) {
+            $.each(json[jsn], function(i, obj) {
+
+                list += '<li class="test">';
+                list += obj;
+                list += '</li>';
+                $('#list').html(list);
+            });
+        });
+        localStorage.setItem('lang', numb);
+    }
+    if (lng == '3') {
+        $('body').css({
+            'direction': 'rtl'
+        });
+    }
+    if (lng) {
+        getLang(lng);
+    } else {
+        getLang(1);
+    }
+    $(document).ready(function() {
+        $('.lang').each(function(index, value) {
+            $(value).on('click', function() {
+                getLang($(this).data('lang'));
+                if ($(this).data('lang') === 3) {
+                    $('body').css({
+                        'direction': 'rtl'
+                    });
+                } else {
+                    $('body').css({
+                        'direction': 'ltr'
+                    });
+                }
+            });
+        });
+    });
+</script>
+
+</html>
